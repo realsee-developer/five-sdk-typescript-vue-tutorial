@@ -1,7 +1,8 @@
 <template>
     <FiveProvider :work="work">
         <FiveCanvas :width="width" :height="height" />
-        <ModelControl />
+        <ModeController />
+        <TaggingController />
     </FiveProvider>
 </template>
 
@@ -10,7 +11,8 @@
 import { FiveProvider, FiveCanvas } from "@realsee/five/vue";
 import { ref } from "vue";
 import { useWindowDemisions } from "./useWindowDemisions";
-import ModelControl from "./ModelControl.vue";
+import ModeController from "./ModeController.vue";
+import TaggingController from "./TaggingController.vue";
 
 const work = ref();
 const workURL = "https://vrlab-public.ljcdn.com/release/static/image/release/five/work-sample/07bdc58f413bc5494f05c7cbb5cbdce4/work.json";
