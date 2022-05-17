@@ -14,7 +14,7 @@ function useWindowDemisions() {
     onBeforeUnmount(() => {
         window.removeEventListener("resize", listener, false)
     }) 
-    return {width , height}
+    return { width , height }
 }
 
 export { useWindowDemisions }

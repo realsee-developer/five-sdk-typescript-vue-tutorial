@@ -2,9 +2,9 @@
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid justify-content-center">
             <div class="btn-group">
-                <button class="btn btn-primary active" @click="() => setState({mode: Five.Mode.Panorama})">全景漫游</button>
-                <button class="btn btn-primary" @click="() => setState({mode: Five.Mode.Floorplan}) ">空间总览</button>
-            </div>
+                <button :class="state.mode == 'Panorama' ? 'btn btn-primary active' : 'btn btn-primary'" @click="() => setState({mode: Five.Mode.Panorama})">全景漫游</button>
+                <button :class="state.mode == 'Panorama' ? 'btn btn-primary' : 'btn btn-primary active'" @click="() => setState({mode: Five.Mode.Floorplan}) ">空间总览</button>
+           </div>
         </div>
   </nav>
 </template>
@@ -13,8 +13,7 @@
 
 import { useFiveCurrentState } from "@realsee/five/vue";
 import { Five } from "@realsee/five";
-import { ref } from "vue";
 
-const [, setState] = useFiveCurrentState();
+const [state, setState] = useFiveCurrentState();
 
 </script>

@@ -7,7 +7,7 @@
         <div class="js-marks" v-if="marks.length > 0">
             <p v-for="(v3, index) in marks" calss="badge bg-primary d-block m-2">
                 <span>x={{v3.x.toFixed(2)}} y={{v3.y.toFixed(2)}} z={{v3.z.toFixed(2)}}</span>
-                <i class="bi bi-x-circle ms-2"></i>
+                <i class="bi bi-x-circle ms-2" @click="() => {removeMark(index)}"></i>
             </p>
         </div>
     </div>
@@ -18,7 +18,7 @@
     import { ref } from 'vue';
     const marks = ref<THREE.Vector3[]>([]);
     const isSwitch = ref(false);
-    const raycasterRef =ref<Raycaster>(new Raycaster());
+    const raycasterRef = ref<Raycaster>(new Raycaster());
     const fiveModelIntersectRaycaster = useFiveModelIntersectRaycaster();
     const intersect = fiveModelIntersectRaycaster(raycasterRef);
 
@@ -29,5 +29,9 @@
             return false;
         }
     })
+    
+    const removeMark = (index: number) => {
+        marks.value.splice(index, 1);
+    }
 
 </script>

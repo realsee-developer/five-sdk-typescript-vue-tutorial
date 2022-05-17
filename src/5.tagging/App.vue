@@ -8,7 +8,8 @@
 
 <script setup lang="ts">
 
-import { FiveProvider, FiveCanvas } from "@realsee/five/vue";
+import { FiveProvider, FiveCanvas } from "@realsee/five/vue"
+import { parseWork } from "@realsee/five";
 import { ref } from "vue";
 import { useWindowDemisions } from "./useWindowDemisions";
 import ModeController from "./ModeController.vue";
@@ -17,6 +18,6 @@ import TaggingController from "./TaggingController.vue";
 const work = ref();
 const workURL = "https://vrlab-public.ljcdn.com/release/static/image/release/five/work-sample/07bdc58f413bc5494f05c7cbb5cbdce4/work.json";
 
-fetch(workURL).then(response => response.text()).then(text => work.value = text);
+fetch(workURL).then(response => response.text()).then(text => work.value = parseWork(text));
 const { width, height } = useWindowDemisions();
 </script>

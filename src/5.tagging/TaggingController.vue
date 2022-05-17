@@ -1,13 +1,13 @@
 <template>
     <div class="card position-fixed m-2 top-0 start-0">
-        <button class="btn btn-primary js-add-tag" @click="addTag">打标签</button>
+        <button class="btn btn-primary" @click="addTag">打标签</button>
     </div>
-    <div v-for="(tag, index) in tags" class="tag" :style="{ left: project2d(tag.position, false).value?.x + 'px', top: project2d(tag.position, false).value?.y + 'px'}">
+    <div v-for="(tag, index) in tags" class="tag" :style="tagStyle(tag)">
         <div class="tag-pannel">
             <span class="tag-content">{{tag.label}}</span>
         </div>
     </div>
-    <div class="tag" :style="{ position: 'absolute', left: newTag ? project2d(newTag.position, false).value?.x + 'px' : '0px', top: newTag ? project2d(newTag?.position, false).value?.y + 'px': '0px',  display: newTag ?'block' : 'none' }">
+    <div class="tag" :style="newTagStyle(newTag)">
         <div class="tag-pannel">
             <span class="tag-content">{{newTag?.label}}</span>
         </div>
@@ -26,7 +26,7 @@ import { Vector3 } from "three";
     let tags: Tag[] = reactive([]);
     const project2d = useFiveProject2d();
 
-    const intersectPoint = ref<Vector3>(new Vector3(0,0,0));
+    const intersectPoint = ref<Vector3>(new Vector3(0, 0, 0));
 
     useFiveEventCallback("intersectionOnModelUpdate", (intersect) => {
         // 更新三维点
@@ -51,6 +51,26 @@ import { Vector3 } from "three";
                 label: window.prompt("添加标签", "") || "未命名",
                 position: new Vector3(0, 0, 0)
             }
+        }
+    }
+
+    const tagStyle = (tag: Tag) => {
+        return { 
+            left: project2d(tag.position, false).value?.x + 'px',
+            top: project2d(tag.position, false).value?.y + 'px'
+        }
+    }
+
+    const newTagStyle = (tag: Tag | null) => {
+        if(tag) {
+            return { 
+                left: project2d(tag.position, false).value?.x + 'px',
+                top: project2d(tag.position, false).value?.y + 'px',
+                display: 'block',
+            }
+        }
+        return {
+            display: 'none'
         }
     }
 
@@ -90,7 +110,6 @@ import { Vector3 } from "three";
         background: #333; 
         pointer-events: none; 
     }
-  
 
 
 </style>
