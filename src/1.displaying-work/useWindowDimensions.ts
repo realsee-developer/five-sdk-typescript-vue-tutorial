@@ -1,6 +1,6 @@
 import {ref, onBeforeUnmount} from "vue"
 
-function useWindowDemisions() {
+function useWindowDimensions() {
     const width = ref<number>(window.innerWidth);
     const height = ref<number>(window.innerHeight);
 
@@ -10,10 +10,11 @@ function useWindowDemisions() {
     }
 
     window.addEventListener("resize", listener, false)
+
     onBeforeUnmount(() => {
         window.removeEventListener("resize", listener, false)
-    })
-    return {width , height}
+    }) 
+    return { width , height }
 }
 
-export { useWindowDemisions }
+export { useWindowDimensions }
