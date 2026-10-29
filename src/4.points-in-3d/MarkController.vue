@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0 -->
 <template>
     <div class="card position-fixed m-2 top-0 start-0">
         <div class="form-check form-switch m-2">

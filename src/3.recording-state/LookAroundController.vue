@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0 -->
 <template>
     <div class="card position-fixed m-2 top-0 end-0">
         <button class="btn btn-light" v-show="isShow" @click="startFunc"><i class="bi bi-arrow-repeat"></i></button>

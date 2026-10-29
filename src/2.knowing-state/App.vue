@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0 -->
 <template>
     <FiveProvider :work="work">
         <FiveCanvas :width="width" :height="height" />

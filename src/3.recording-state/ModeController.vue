@@ -1,3 +1,4 @@
+<!-- SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0 -->
 <template>
     <nav class="navbar fixed-bottom navbar-light bg-light">
         <div class="container-fluid justify-content-center">
